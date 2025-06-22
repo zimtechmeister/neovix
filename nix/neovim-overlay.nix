@@ -48,39 +48,41 @@ with final.pkgs.lib; let
       optional = false;
     }
 
-    # {
-    #   plugin = mini-deps;
-    #   optional = false;
-    # }
 
-    {
-      plugin = mini-ai;
-      optional = false;
-    }
-    {
-      plugin = mini-icons;
-      optional = false;
-    }
-    {
-      plugin = mini-pairs;
-      optional = false;
-    }
-    {
-      plugin = mini-comment;
-      optional = false;
-    }
-    {
-      plugin = mini-surround;
-      optional = false;
-    }
-    {
-      plugin = mini-files;
-      optional = false;
-    }
+    #lsp
+    nvim-lspconfig
+    lazydev-nvim
 
-    # ---
+    #debugger
+    nvim-dap
+    nvim-dap-ui
+    nvim-nio
+    nvim-dap-virtual-text
+
     nvim-treesitter.withAllGrammars
+    blink-cmp
+    lualine-nvim
+    (mkNvimPlugin inputs.lualine-macro-recording "lualine-macro-recording")
+    bufferline-nvim
+    gitsigns-nvim
+    undotree
+    markdown-preview-nvim
+    colorizer
+    # volke
+    which-key-nvim
+    todo-comments-nvim
+    noice-nvim
+    flash-nvim
+    trouble-nvim
+    # mini
+    mini-ai
+    mini-comment
+    mini-pairs
+    mini-surround
+    mini-files
+    mini-icons
 
+    # colorschemes
     (mkNvimPlugin inputs.vim-moonfly-colors "vim-moonfly-colors")
     (mkNvimPlugin inputs.vague-nvim "vague-nvim")
     gruvbox-nvim
@@ -92,30 +94,6 @@ with final.pkgs.lib; let
 
     # gruvbox-material # sainnhe's version
     gruvbox-material-nvim
-
-    nvim-lspconfig
-    lazydev-nvim
-
-    nvim-dap
-    nvim-dap-ui
-    nvim-nio
-    nvim-dap-virtual-text
-
-    blink-cmp
-
-    lualine-nvim
-    (mkNvimPlugin inputs.lualine-macro-recording "lualine-macro-recording")
-    bufferline-nvim
-    gitsigns-nvim
-    undotree
-    markdown-preview-nvim
-    colorizer
-
-    which-key-nvim
-    todo-comments-nvim
-    noice-nvim
-    flash-nvim
-    trouble-nvim
   ];
 
   extraPackages = with pkgs; [
