@@ -47,7 +47,7 @@ with lib;
       # If `optional` is set to `false`, the plugin is installed in the 'start' packpath
       # set to `true`, it is installed in the 'opt' packpath, and can be lazy loaded with
       # ':packadd! {plugin-name}
-      optional = false;
+      optional = true; # Default: false
       runtime = {};
     };
 
@@ -211,8 +211,8 @@ with lib;
         + lib.optionalString isCustomAppName ''
           mv $out/bin/nvim $out/bin/${lib.escapeShellArg appName}
         '';
-      meta.mainProgram 
-        = if isCustomAppName 
-            then appName 
+      meta.mainProgram
+        = if isCustomAppName
+            then appName
             else oa.meta.mainProgram;
     })

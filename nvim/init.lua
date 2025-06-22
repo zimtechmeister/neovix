@@ -1,95 +1,147 @@
 vim.loader.enable()
 
-local cmd = vim.cmd
-local opt = vim.o
+vim.cmd.colorscheme 'gruvbox'
 
--- <leader> key. Defaults to `\`. Some people prefer space.
--- The default leader is '\'. Some people prefer <space>. Uncomment this if you do, too.
--- vim.g.mapleader = ' '
--- vim.g.maplocalleader = ' '
 
--- See :h <option> to see what the options do
+-- TODO: maybe do this in a seperate key.lua file
 
--- Search down into subfolders
-opt.path = vim.o.path .. '**'
+--  See `:help vim.keymap.set()`
 
-opt.number = true
-opt.relativenumber = true
-opt.cursorline = true
-opt.lazyredraw = true
-opt.showmatch = true -- Highlight matching parentheses, etc
-opt.incsearch = true
-opt.hlsearch = true
+-- set <space> as leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
-opt.spell = true
-opt.spelllang = 'en'
+--clear highlight on pressing <Esc> in normal mode after searching
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-opt.expandtab = true
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
-opt.foldenable = true
-opt.history = 2000
-opt.nrformats = 'bin,hex' -- 'octal'
-opt.undofile = true
-opt.splitright = true
-opt.splitbelow = true
-opt.cmdheight = 0
+-- Keybinds to make split navigation easier.
+--  Use CTRL+<hjkl> to switch between windows
+vim.keymap.set('n', '<Left>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<Right>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<Down>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<Up>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-opt.colorcolumn = '100'
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- Configure Neovim diagnostic messages
+-- move highlighted line with Shift + j/k
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-local function prefix_diagnostic(prefix, diagnostic)
-  return string.format(prefix .. ' %s', diagnostic.message)
-end
-
-vim.diagnostic.config {
-  virtual_text = {
-    prefix = '',
-    format = function(diagnostic)
-      local severity = diagnostic.severity
-      if severity == vim.diagnostic.severity.ERROR then
-        return prefix_diagnostic('󰅚', diagnostic)
-      end
-      if severity == vim.diagnostic.severity.WARN then
-        return prefix_diagnostic('⚠', diagnostic)
-      end
-      if severity == vim.diagnostic.severity.INFO then
-        return prefix_diagnostic('ⓘ', diagnostic)
-      end
-      if severity == vim.diagnostic.severity.HINT then
-        return prefix_diagnostic('󰌶', diagnostic)
-      end
-      return prefix_diagnostic('■', diagnostic)
+-- Highlight when yanking (copying) text
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
     end,
-  },
-  signs = {
-    text = {
-      -- Requires Nerd fonts
-      [vim.diagnostic.severity.ERROR] = '󰅚',
-      [vim.diagnostic.severity.WARN] = '⚠',
-      [vim.diagnostic.severity.INFO] = 'ⓘ',
-      [vim.diagnostic.severity.HINT] = '󰌶',
-    },
-  },
-  update_in_insert = false,
-  underline = true,
-  severity_sort = true,
-  float = {
-    focusable = false,
-    style = 'minimal',
-    border = 'rounded',
-    source = 'if_many',
-    header = '',
-    prefix = '',
-  },
-}
+})
 
--- Native plugins
-cmd.filetype('plugin', 'indent', 'on')
-cmd.packadd('cfilter') -- Allows filtering the quickfix list with :cfdo
 
--- let sqlite.lua (which some plugins depend on) know where to find sqlite
-vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE')
+
+
+
+-- TODO: maybe do this in a seperate opt.lua file
+
+-- Set to true if you have a Nerd Font installed and selected in the terminal
+vim.g.have_nerd_font = true
+
+--line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+vim.opt.mouse = 'a'
+
+-- Don't show the mode, since it's already in the status line
+vim.opt.showmode = false
+
+vim.opt.clipboard = 'unnamedplus'
+
+vim.opt.hlsearch = true
+
+vim.opt.breakindent = true
+
+vim.opt.undofile = true
+
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.signcolumn = 'yes'
+
+vim.opt.updatetime = 250
+
+-- Decrease mapped sequence wait time
+-- Displays which-key popup sooner
+vim.opt.timeoutlen = 300
+
+-- Configure how new splits should be opened
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- Sets how Neovim will display certain whitespace characters in the editor.
+vim.opt.list = true
+vim.opt.listchars = { tab = '→ ', trail = '·', nbsp = '␣' }
+
+-- tab behavior
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+vim.opt.smartindent = true
+
+-- Stop automatic insertion of comments on newline 'fo-table' for reference
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function()
+        vim.opt.formatoptions:remove { "c", "r", "o" }
+    end,
+})
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split'
+
+vim.opt.cursorline = true
+
+vim.opt.colorcolumn = "80"
+
+vim.opt.wrap = false
+
+vim.opt.scrolloff = 8
+
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+
+
+
+
+
+
+
+-- TODO: maybe do this in a seperate neovide.lua file
+
+-- NOTE: some settings are configured in a neovide/config.toml file
+if vim.g.neovide then
+    vim.g.neovide_confirm_quit = true
+
+    -- zoom in/out
+    vim.g.neovide_scale_factor = 1.0
+    local change_scale_factor = function(delta)
+        vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+    end
+    vim.keymap.set("n", "<C-=>", function()
+        change_scale_factor(1.25)
+    end)
+    vim.keymap.set("n", "<C-->", function()
+        change_scale_factor(1 / 1.25)
+    end)
+    vim.keymap.set("n", "<C-0>", function()
+        vim.g.neovide_scale_factor = 1.0
+    end)
+end

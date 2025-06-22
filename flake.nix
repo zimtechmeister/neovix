@@ -8,10 +8,22 @@
 
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
-    # wf-nvim = {
-    #   url = "github:Cassin01/wf.nvim";
-    #   flake = false;
-    # };
+    vim-moonfly-colors = {
+      url = "github:bluz71/vim-moonfly-colors";
+      flake = false;
+    };
+    everforest-nvim = {
+      url = "github:neanias/everforest-nvim";
+      flake = false;
+    };
+    vague-nvim = {
+      url = "github:vague2k/vague.nvim";
+      flake = false;
+    };
+    lualine-macro-recording = {
+      url = "github:yavorski/lualine-macro-recording.nvim";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
