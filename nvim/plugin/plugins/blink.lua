@@ -1,4 +1,4 @@
-return {
+require('lze').load {
     {
         "blink.cmp",
         event = "DeferredUIEnter",

@@ -48,27 +48,50 @@ with final.pkgs.lib; let
       optional = false;
     }
 
-    # mini-deps
+    # {
+    #   plugin = mini-deps;
+    #   optional = false;
+    # }
 
-    # mini-ai
-    mini-icons
-    mini-pairs
-    mini-comment
-    mini-surround
-    mini-files
+    {
+      plugin = mini-ai;
+      optional = false;
+    }
+    {
+      plugin = mini-icons;
+      optional = false;
+    }
+    {
+      plugin = mini-pairs;
+      optional = false;
+    }
+    {
+      plugin = mini-comment;
+      optional = false;
+    }
+    {
+      plugin = mini-surround;
+      optional = false;
+    }
+    {
+      plugin = mini-files;
+      optional = false;
+    }
 
     # ---
     nvim-treesitter.withAllGrammars
 
     (mkNvimPlugin inputs.vim-moonfly-colors "vim-moonfly-colors")
-    everforest
-    (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
     (mkNvimPlugin inputs.vague-nvim "vague-nvim")
     gruvbox-nvim
-    gruvbox-material
-    gruvbox-material-nvim
     tokyonight-nvim
     oxocarbon-nvim
+
+    # everforest # sainnhe's version
+    (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
+
+    # gruvbox-material # sainnhe's version
+    gruvbox-material-nvim
 
     nvim-lspconfig
     lazydev-nvim

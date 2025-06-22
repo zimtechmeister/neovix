@@ -1,4 +1,4 @@
-return {
+require('lze').load {
     {
         'nvim-treesitter',
         event = "DeferredUIEnter",

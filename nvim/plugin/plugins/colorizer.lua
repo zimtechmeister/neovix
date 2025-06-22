@@ -1,4 +1,4 @@
-return {
+require('lze').load {
     {
         "colorizer",
         event = "DeferredUIEnter",

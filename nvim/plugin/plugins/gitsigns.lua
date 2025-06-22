@@ -1,4 +1,4 @@
-return {
+require('lze').load {
     {
         "gitsigns.nvim",
         event = "DeferredUIEnter",

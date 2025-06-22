@@ -1,8 +1,5 @@
 vim.loader.enable()
 
-vim.cmd.colorscheme 'gruvbox'
-
-
 -- TODO: maybe do this in a seperate key.lua file
 
 --  See `:help vim.keymap.set()`
