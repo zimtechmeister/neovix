@@ -52,6 +52,7 @@ with final.pkgs.lib; let
     #lsp
     nvim-lspconfig
     lazydev-nvim
+    conform-nvim
 
     #debugger
     nvim-dap
