@@ -4,6 +4,7 @@
 - [ ] lsp remove the nixCats things
 - [ ] in gerneral could rework how lsps work take reference from the template
 - [ ] noice plugin has exaple on how not to use lze
+- [ ] what do i need the lua/user/lsp file for?
 
 ---
 old readme from the nixCats config i had

@@ -2,16 +2,8 @@ require('lze').load {
     {
         "gitsigns.nvim",
         event = "DeferredUIEnter",
-        after = function(plugin)
-            require('gitsigns').setup({
-                signs = {
-                    add = { text = '+' },
-                    change = { text = '~' },
-                    delete = { text = '_' },
-                    topdelete = { text = '‾' },
-                    changedelete = { text = '~' },
-                },
-            })
+        after = function()
+            require('gitsigns').setup()
         end,
     }
 }
