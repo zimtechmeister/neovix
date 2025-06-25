@@ -64,7 +64,8 @@ with final.pkgs.lib; let
     blink-cmp
     lualine-nvim
     (mkNvimPlugin inputs.lualine-macro-recording "lualine-macro-recording")
-    bufferline-nvim
+    harpoon2
+    nvim-scrollbar
     gitsigns-nvim
     undotree
     markdown-preview-nvim
