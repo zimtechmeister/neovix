@@ -113,8 +113,6 @@ with final.pkgs.lib; let
     clippy
     rustfmt
 
-    sqls
-
     gdb
   ];
 in {

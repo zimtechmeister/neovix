@@ -82,11 +82,7 @@ require('lze').load {
         cmd = { "LazyDev" },
         ft = "lua",
         after = function(_)
-            require('lazydev').setup({
-                library = {
-                    { words = { "nixCats" }, path = (nixCats.nixCatsPath or "") .. '/lua' },
-                },
-            })
+            require('lazydev').setup()
         end,
     },
     {
@@ -102,7 +98,7 @@ require('lze').load {
                     },
                     signatureHelp = { enabled = true },
                     diagnostics = {
-                        globals = { "nixCats", "vim", },
+                        globals = { "vim", },
                         disable = { 'missing-fields' },
                     },
                     telemetry = { enabled = false },
@@ -137,10 +133,6 @@ require('lze').load {
             -- it should always match the lsp-attach file that is sourced by lspconfig
             on_attach = onAttach,
         },
-    },
-    {
-        "sqls",
-        lsp = {},
     },
     {
         -- TODO: look into nixCats docs or example template for config

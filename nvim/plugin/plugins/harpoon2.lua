@@ -9,8 +9,8 @@ require('lze').load {
             harpoon:setup()
             -- REQUIRED
 
-            vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
-            vim.keymap.set("n", "<leader>hl", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+            vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end, { desc = 'add'})
+            vim.keymap.set("n", "<leader>hl", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = 'list'})
 
             vim.keymap.set("n", "<C-1>", function() harpoon:list():select(1) end)
             vim.keymap.set("n", "<C-2>", function() harpoon:list():select(2) end)
