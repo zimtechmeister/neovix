@@ -63,21 +63,19 @@ vim.keymap.set('n', '<c-/>', function() Snacks.terminal() end, { desc = "Toggle 
 -- -- picker
 vim.keymap.set('n', '<leader>fp', function() Snacks.picker.pickers() end, { desc = "Pickers" })
 vim.keymap.set('n', '<leader>ff', function() Snacks.picker.files() end, { desc = "Files" })
-vim.keymap.set('n', '<leader>fb', function() Snacks.picker.buffers() end, { desc = "Buffers" })
 vim.keymap.set('n', '<leader>fr', function() Snacks.picker.recent() end, { desc = "Recent Files" })
--- incorrect syntax
+-- vim.keymap.set('n', '<leader>fb', function() Snacks.picker.buffers() end, { desc = "Buffers" })
 -- start in normal mode
--- {
---     "<leader>fb",
---     function()
---         Snacks.picker.buffers({
---             on_show = function()
---                 vim.cmd.stopinsert()
---             end,
---         })
---     end,
---     desc = "Buffers"
--- },
+vim.keymap.set('n', '<leader>fb',
+    function()
+        Snacks.picker.buffers({
+            on_show = function()
+                vim.cmd.stopinsert()
+            end,
+        })
+    end,
+    { desc = "Buffers" }
+)
 vim.keymap.set('n', '<leader>f/', function() Snacks.picker.grep() end, { desc = "Grep" })
 vim.keymap.set('n', '<leader>f?', function() Snacks.picker.grep_buffers() end, { desc = "Grep Open Buffers" })
 vim.keymap.set('n', '<leader>f:', function() Snacks.picker.command_history() end, { desc = "Command History" })
