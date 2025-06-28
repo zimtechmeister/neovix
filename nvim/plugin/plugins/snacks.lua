@@ -52,8 +52,6 @@ require("snacks").setup({
 
 vim.keymap.set('n', '<Esc', function() Snacks.notifier.hide() end, { desc = "Notification (Hide)" })
 vim.keymap.set('n', '<leader>n', function() Snacks.notifier.show_history() end, { desc = "Notification History" })
-vim.keymap.set('n', '<leader>td', function() Snacks.bufdelete() end, { desc = "Delete Buffer" })
-vim.keymap.set('n', '<leader>tr', function() Snacks.rename.rename_file() end, { desc = "Rename File" })
 vim.keymap.set('n', '<leader>g', function() Snacks.lazygit.open() end, { desc = "Lazygit" })
 vim.keymap.set('n', '<leader>gb', function() Snacks.git.blame_line() end, { desc = "Git Blame Line" })
 vim.keymap.set('n', '<c-/>', function() Snacks.terminal() end, { desc = "Toggle Terminal" })

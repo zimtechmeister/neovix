@@ -39,6 +39,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+-- Exit nvim saving the filecontent and a session file to the current working directory
+vim.keymap.set('n', 'ZS', function()
+    vim.cmd('wa')
+    vim.cmd('mksession! Session.vim')
+    vim.cmd('qa')
+end, { desc = "Save session in CWD and exit" })
 
 
 
