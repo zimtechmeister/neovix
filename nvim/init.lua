@@ -40,6 +40,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Exit nvim saving the filecontent and a session file to the current working directory
+-- Load the session with nvim -S Session.vim or :source Session.vim
 vim.keymap.set('n', 'ZS', function()
     vim.cmd('wa')
     vim.cmd('mksession! Session.vim')
@@ -57,6 +58,9 @@ vim.g.have_nerd_font = true
 --line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
+
+-- in visual block mode move everywhere you want
+vim.opt.virtualedit = 'block'
 
 vim.opt.mouse = 'a'
 

@@ -48,7 +48,6 @@ with final.pkgs.lib; let
       optional = false;
     }
 
-
     #lsp
     nvim-lspconfig
     lazydev-nvim
@@ -88,6 +87,7 @@ with final.pkgs.lib; let
     (mkNvimPlugin inputs.vim-moonfly-colors "vim-moonfly-colors")
     (mkNvimPlugin inputs.vague-nvim "vague-nvim")
     gruvbox-nvim
+    catppuccin-nvim
     tokyonight-nvim
     oxocarbon-nvim
 
