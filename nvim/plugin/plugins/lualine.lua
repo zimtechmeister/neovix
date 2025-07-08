@@ -15,7 +15,7 @@ require('lze').load {
         end,
     },
     {
-        "vimplugin-lualine-macro-recording",
+        "lualine-macro-recording",
         dep_of = "lualine.nvim",
     },
 }
