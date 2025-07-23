@@ -34,20 +34,6 @@ with final.pkgs.lib; let
     # or from flake inputs as
     # (mkNvimPlugin inputs.inputName "pulginName")
 
-    {
-      plugin = lze;
-      optional = false;
-    }
-    {
-      plugin = lzextras;
-      optional = false;
-    }
-
-    {
-      plugin = snacks-nvim;
-      optional = false;
-    }
-
     #lsp
     nvim-lspconfig
     lazydev-nvim
@@ -68,8 +54,9 @@ with final.pkgs.lib; let
     gitsigns-nvim
     undotree
     markdown-preview-nvim
-    colorizer
+    colorizer # no setup needed
     # volke
+    snacks-nvim
     which-key-nvim
     todo-comments-nvim
     noice-nvim
@@ -90,10 +77,8 @@ with final.pkgs.lib; let
     catppuccin-nvim
     tokyonight-nvim
     oxocarbon-nvim
-
     # everforest # sainnhe's version
     (mkNvimPlugin inputs.everforest-nvim "everforest-nvim")
-
     # gruvbox-material # sainnhe's version
     gruvbox-material-nvim
   ];
