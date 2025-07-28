@@ -1,3 +1,5 @@
+-- defaut config provided by nvim-lspconfig
+-- for reference https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('clangd')
 vim.lsp.enable('jdtls')
@@ -6,8 +8,9 @@ vim.lsp.enable('nixd')
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
         -- NOTE: this is build in completion but i'm currently using blink
-        -- local client = vim.lsp.get_client_by_id(ev.data.client_id)
         -- if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
         --     vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'fuzzy', 'popup', 'preview' }
         --     vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })

@@ -30,8 +30,6 @@ vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.hlsearch = true
 
-vim.opt.breakindent = true
-
 vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
@@ -46,10 +44,6 @@ vim.opt.updatetime = 250
 -- Displays which-key popup sooner
 vim.opt.timeoutlen = 300
 
--- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-
 -- Sets how Neovim will display certain whitespace characters in the editor.
 vim.opt.list = true
 vim.opt.listchars = { tab = '→ ', trail = '·', nbsp = '␣' }
@@ -63,12 +57,12 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 -- Stop automatic insertion of comments on newline 'fo-table' for reference
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "*",
-	callback = function()
-		vim.opt.formatoptions:remove { "c", "r", "o" }
-	end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "*",
+--     callback = function()
+--         vim.opt.formatoptions:remove { "c", "r", "o" }
+--     end,
+-- })
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -88,20 +82,20 @@ vim.g.netrw_liststyle = 3
 -- Neovide
 -- NOTE: some settings are configured in a neovide/config.toml file
 if vim.g.neovide then
-	vim.g.neovide_confirm_quit = true
+    vim.g.neovide_confirm_quit = true
 
-	-- zoom in/out
-	vim.g.neovide_scale_factor = 1.0
-	local change_scale_factor = function(delta)
-		vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
-	end
-	vim.keymap.set("n", "<C-=>", function()
-		change_scale_factor(1.25)
-	end)
-	vim.keymap.set("n", "<C-->", function()
-		change_scale_factor(1 / 1.25)
-	end)
-	vim.keymap.set("n", "<C-0>", function()
-		vim.g.neovide_scale_factor = 1.0
-	end)
+    -- zoom in/out
+    vim.g.neovide_scale_factor = 1.0
+    local change_scale_factor = function(delta)
+        vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+    end
+    vim.keymap.set("n", "<C-=>", function()
+        change_scale_factor(1.25)
+    end)
+    vim.keymap.set("n", "<C-->", function()
+        change_scale_factor(1 / 1.25)
+    end)
+    vim.keymap.set("n", "<C-0>", function()
+        vim.g.neovide_scale_factor = 1.0
+    end)
 end

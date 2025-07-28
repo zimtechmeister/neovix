@@ -36,8 +36,6 @@ with final.pkgs.lib; let
 
     #lsp
     nvim-lspconfig
-    lazydev-nvim
-    conform-nvim
 
     #debugger
     nvim-dap
@@ -61,7 +59,6 @@ with final.pkgs.lib; let
     todo-comments-nvim
     noice-nvim
     flash-nvim
-    trouble-nvim
     # mini
     mini-ai
     mini-comment
@@ -99,6 +96,10 @@ with final.pkgs.lib; let
     rustfmt
 
     gdb
+
+    # Snacks image dependency
+    ghostscript
+    mermaid-cli
   ];
 in {
   # This is the neovim derivation

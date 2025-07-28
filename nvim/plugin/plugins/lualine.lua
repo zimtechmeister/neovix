@@ -4,6 +4,9 @@ require('lualine').setup({
         section_separators = { left = '', right = '' },
     },
     sections = {
-        lualine_c = { { 'filename', path = 1, }, "macro_recording", "%S" },
+        lualine_c = {
+            { 'filename', path = 1, },
+            "macro_recording", "%S"
+        },
     },
 })
