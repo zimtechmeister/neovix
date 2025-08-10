@@ -20,8 +20,16 @@ vim.opt.virtualedit = 'block'
 
 vim.opt.mouse = 'a'
 
--- in command mode press <tab> to get completion menu
--- vim.opt.wildmode = "noselect:full"
+-- NOTE: wildtrigger only on nightly nvim build
+-- vim.opt.wildmode = "noselect:lastused,full"
+-- vim.opt.wildoptions = "pum"
+-- vim.api.nvim_create_autocmd("CmdlineChanged", {
+--     pattern = { ":", "/", "?" },
+--     callback = function()
+--         vim.fn.wildtrigger()
+--     end,
+--     desc = "Trigger wildmenu for command line, search, and substitute prompts",
+-- })
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
