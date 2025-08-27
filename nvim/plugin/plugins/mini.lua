@@ -15,11 +15,12 @@ require('mini.surround').setup({
     },
 })
 require('mini.files').setup()
-vim.keymap.set("n", "<leader>e", function() MiniFiles.open() end, { desc = 'Open Mini Files' })
--- NOTE: open MiniFiles in cwd
--- vim.keymap.set("n", "<leader>e", function()
---         MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
---         MiniFiles.reveal_cwd()
---     end,
---     { desc = 'Open Mini Files' })
+vim.keymap.set("n", "<leader>e", function()
+        MiniFiles.open()
+    end,
+    { desc = 'Open Mini Files' })
+vim.keymap.set("n", "<leader>E", function()
+        MiniFiles.open(vim.api.nvim_buf_get_name(0), true)
+    end,
+    { desc = 'Open Mini Files at current buffer' })
 require('mini.icons').setup()
