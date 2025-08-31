@@ -71,6 +71,14 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt.formatoptions:remove { "c", "r", "o" }
     end,
 })
+-- show line nubers and more in terminal buffer
+vim.api.nvim_create_autocmd("TermOpen", {
+    callback = function()
+        vim.opt.number = true
+        vim.opt.relativenumber = true
+        vim.opt.signcolumn = 'yes'
+    end,
+})
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
