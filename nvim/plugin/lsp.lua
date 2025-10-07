@@ -33,24 +33,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<cr>',
             { desc = 'signature help', buffer = bufnr })
 
-        --TODO: compatible with nvim 0.12
         -- copilot lsp inline completion
-        -- if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, bufnr) then
-        --     vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
-        --
-        --     vim.keymap.set(
-        --         'i',
-        --         '<C-F>',
-        --         vim.lsp.inline_completion.get,
-        --         { desc = 'LSP: accept inline completion', buffer = bufnr }
-        --     )
-        --     vim.keymap.set(
-        --         'i',
-        --         '<C-G>',
-        --         vim.lsp.inline_completion.select,
-        --         { desc = 'LSP: switch inline completion', buffer = bufnr }
-        --     )
-        -- end
+        if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, bufnr) then
+            vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
+
+            vim.keymap.set(
+                'i',
+                '<C-F>',
+                vim.lsp.inline_completion.get,
+                { desc = 'LSP: accept inline completion', buffer = bufnr }
+            )
+            vim.keymap.set(
+                'i',
+                '<C-G>',
+                vim.lsp.inline_completion.select,
+                { desc = 'LSP: switch inline completion', buffer = bufnr }
+            )
+        end
     end
 })
 
