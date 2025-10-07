@@ -16,6 +16,7 @@ with final.pkgs.lib; let
 
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
+    neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
     inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
   };
 
