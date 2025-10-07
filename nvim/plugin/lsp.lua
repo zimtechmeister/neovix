@@ -12,14 +12,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local bufnr = args.buf
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-        -- NOTE: this is build in completion but i'm currently using blink
-        -- if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
-        --     vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'fuzzy', 'popup', 'preview' }
-        --     vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
-        --     vim.keymap.set('i', '<C-Space>', function()
-        --         vim.lsp.completion.get()
-        --     end)
-        -- end
+        -- Enable autocompletion
+        if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
+            vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'fuzzy', 'popup', 'preview' }
+            vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+            vim.keymap.set('i', '<C-Space>', function()
+                vim.lsp.completion.get()
+            end)
+        end
 
         -- here i dont check for given capabilities anymore
         vim.keymap.set({ 'n', 'x' }, '<leader>lf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>',

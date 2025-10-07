@@ -45,7 +45,6 @@ with final.pkgs.lib; let
     nvim-dap-virtual-text
 
     nvim-treesitter.withAllGrammars
-    blink-cmp
     lualine-nvim
     (mkNvimPlugin inputs.lualine-macro-recording "lualine-macro-recording")
     arrow-nvim
