@@ -53,12 +53,13 @@ with final.pkgs.lib; let
     undotree
     markdown-preview-nvim
     colorizer # no setup needed
-    # volke
+    # folke
     snacks-nvim
     which-key-nvim
     todo-comments-nvim
     noice-nvim
     flash-nvim
+    sidekick-nvim
     # mini
     mini-ai
     mini-comment
@@ -87,6 +88,7 @@ with final.pkgs.lib; let
     clang-tools
     nixd
     alejandra
+    copilot-language-server
 
     #rust
     rustc

@@ -5,15 +5,17 @@ vim.lsp.enable('clangd')
 vim.lsp.enable('jdtls')
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('nixd')
+vim.lsp.enable('copilot')
 
 vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(ev)
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    callback = function(args)
+        local bufnr = args.buf
+        local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
         -- NOTE: this is build in completion but i'm currently using blink
         -- if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
         --     vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'fuzzy', 'popup', 'preview' }
-        --     vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+        --     vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
         --     vim.keymap.set('i', '<C-Space>', function()
         --         vim.lsp.completion.get()
         --     end)
@@ -21,16 +23,35 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         -- here i dont check for given capabilities anymore
         vim.keymap.set({ 'n', 'x' }, '<leader>lf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>',
-            { desc = 'format buffer', buffer = ev.buf })
+            { desc = 'format buffer', buffer = bufnr })
         vim.keymap.set('n', '<leader>lj', '<cmd>lua vim.diagnostic.open_float()<cr>',
             { desc = 'show diagnostic' })
         vim.keymap.set('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<cr>',
-            { desc = 'definition', buffer = ev.buf })
+            { desc = 'definition', buffer = bufnr })
         vim.keymap.set('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<cr>',
-            { desc = 'declaration', buffer = ev.buf })
+            { desc = 'declaration', buffer = bufnr })
         vim.keymap.set('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<cr>',
-            { desc = 'signature help', buffer = ev.buf })
-    end,
+            { desc = 'signature help', buffer = bufnr })
+
+        --TODO: compatible with nvim 0.12
+        -- copilot lsp inline completion
+        -- if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, bufnr) then
+        --     vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
+        --
+        --     vim.keymap.set(
+        --         'i',
+        --         '<C-F>',
+        --         vim.lsp.inline_completion.get,
+        --         { desc = 'LSP: accept inline completion', buffer = bufnr }
+        --     )
+        --     vim.keymap.set(
+        --         'i',
+        --         '<C-G>',
+        --         vim.lsp.inline_completion.select,
+        --         { desc = 'LSP: switch inline completion', buffer = bufnr }
+        --     )
+        -- end
+    end
 })
 
 vim.diagnostic.config({
