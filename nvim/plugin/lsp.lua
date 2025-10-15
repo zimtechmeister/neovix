@@ -6,6 +6,7 @@ vim.lsp.enable('jdtls')
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('nixd')
 vim.lsp.enable('copilot')
+vim.lsp.enable('air')
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)

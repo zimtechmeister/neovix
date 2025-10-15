@@ -89,6 +89,7 @@ with final.pkgs.lib; let
     nixd
     alejandra
     copilot-language-server
+    air-formatter
 
     #rust
     rustc
