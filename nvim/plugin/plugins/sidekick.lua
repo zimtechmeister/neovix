@@ -1,20 +1,22 @@
 require('sidekick').setup()
 
-vim.keymap.set({ 'i', 'n' }, '<leader><Tab>', function()
-        if not require("sidekick").nes_jump_or_apply() then
-            return "<Tab>"
-        end
-    end,
-    {
-        expr = true,
-        desc = 'Goto/Apply Next Edit Suggestion'
-    }
+vim.keymap.set(
+    { "n", "x", "i", "t" },
+    "<c-.>",
+    function() require("sidekick.cli").toggle() end,
+    { desc = "Sidekick Toggle", }
 )
 vim.keymap.set(
     { 'n' },
-    '<leader>aa',
+    '<leader>ag',
     function() require("sidekick.cli").toggle({ name = "gemini", focus = true }) end,
     { desc = "Sidekick Toggle CLI", }
+)
+vim.keymap.set(
+    { 'n' },
+    '<leader>ad',
+    function() require("sidekick.cli").close() end,
+    { desc = "Detach a CLI Session", }
 )
 vim.keymap.set(
     { 'n' },
@@ -29,6 +31,12 @@ vim.keymap.set(
     { desc = "Send This", }
 )
 vim.keymap.set(
+    { "x", "n" },
+    "<leader>af",
+    function() require("sidekick.cli").send({ msg = "{file}" }) end,
+    { desc = "Send File", }
+)
+vim.keymap.set(
     { "x" },
     "<leader>av",
     function() require("sidekick.cli").send({ msg = "{selection}" }) end,
@@ -40,9 +48,28 @@ vim.keymap.set(
     function() require("sidekick.cli").prompt() end,
     { desc = "Sidekick Select Prompt", }
 )
+
+-- Next Edit Suggestions (NES)
+-- add keymaps to toggle nes
+vim.keymap.set({ 'i', 'n' }, '<leader>r', function()
+        if not require("sidekick").nes_jump_or_apply() then
+            return "<Tab>"
+        end
+    end,
+    {
+        expr = true,
+        desc = 'Goto/Apply Next Edit Suggestion'
+    }
+)
 vim.keymap.set(
-    { "n", "x", "i", "t" },
-    "<c-.>",
-    function() require("sidekick.cli").focus() end,
-    { desc = "Sidekick Switch Focus", }
+    { "n" },
+    "<leader>rt",
+    function() require("sidekick.nes").toggle() end,
+    { desc = "Toggle Next Edit Suggestions", }
+)
+vim.keymap.set(
+    { "n" },
+    "<leader>ru",
+    function() require("sidekick.nes").update() end,
+    { desc = "Update Next Edit Suggestions", }
 )
