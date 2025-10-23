@@ -90,6 +90,7 @@ with final.pkgs.lib; let
     alejandra
     copilot-language-server
     air-formatter
+    tinymist
 
     #rust
     rustc
