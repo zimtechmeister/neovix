@@ -91,6 +91,7 @@ with final.pkgs.lib; let
     copilot-language-server
     air-formatter
     tinymist
+    texlab
 
     #rust
     rustc

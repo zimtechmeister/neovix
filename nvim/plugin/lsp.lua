@@ -8,6 +8,7 @@ vim.lsp.enable('nixd')
 vim.lsp.enable('copilot')
 vim.lsp.enable('air')
 vim.lsp.enable('tinymist')
+vim.lsp.enable('texlab')
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
