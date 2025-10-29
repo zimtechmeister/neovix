@@ -1,4 +1,4 @@
--- defaut config provided by nvim-lspconfig
+-- default config provided by nvim-lspconfig
 -- for reference https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('clangd')
@@ -9,6 +9,8 @@ vim.lsp.enable('copilot')
 vim.lsp.enable('air')
 vim.lsp.enable('tinymist')
 vim.lsp.enable('texlab')
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('eslint')
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)

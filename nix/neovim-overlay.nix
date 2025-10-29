@@ -82,7 +82,7 @@ with final.pkgs.lib; let
   ];
 
   extraPackages = with pkgs; [
-    # language servers, etc.
+    # language servers(lsp), etc.
     lua-language-server
     jdt-language-server
     clang-tools
@@ -92,6 +92,8 @@ with final.pkgs.lib; let
     air-formatter
     tinymist
     texlab
+    typescript-language-server
+    vscode-langservers-extracted
 
     #rust
     rustc
