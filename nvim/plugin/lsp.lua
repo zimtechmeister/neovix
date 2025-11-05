@@ -11,6 +11,7 @@ vim.lsp.enable('tinymist')
 vim.lsp.enable('texlab')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('eslint')
+vim.lsp.enable('vue_ls')
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)

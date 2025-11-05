@@ -94,6 +94,7 @@ with final.pkgs.lib; let
     texlab
     typescript-language-server
     vscode-langservers-extracted
+    vue-language-server
 
     #rust
     rustc
