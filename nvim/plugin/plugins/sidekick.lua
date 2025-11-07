@@ -51,10 +51,11 @@ vim.keymap.set(
 
 -- Next Edit Suggestions (NES)
 -- add keymaps to toggle nes
-vim.keymap.set({ 'i', 'n' }, '<leader>r', function()
-        if not require("sidekick").nes_jump_or_apply() then
-            return "<Tab>"
-        end
+vim.keymap.set(
+    { 'n' },
+    '<leader>r',
+    function()
+        require("sidekick").nes_jump_or_apply()
     end,
     {
         expr = true,
@@ -63,13 +64,13 @@ vim.keymap.set({ 'i', 'n' }, '<leader>r', function()
 )
 vim.keymap.set(
     { "n" },
-    "<leader>rt",
+    "<leader>art",
     function() require("sidekick.nes").toggle() end,
     { desc = "Toggle Next Edit Suggestions", }
 )
 vim.keymap.set(
     { "n" },
-    "<leader>ru",
+    "<leader>aru",
     function() require("sidekick.nes").update() end,
     { desc = "Update Next Edit Suggestions", }
 )
