@@ -31,12 +31,6 @@ with lib;
     withRuby ? false, # Build Neovim with Ruby support?
     withNodeJs ? false, # Build Neovim with NodeJS support?
     withSqlite ? true, # Add sqlite? This is a dependency for some plugins
-    # You probably don't want to create vi or vim aliases
-    # if the appName is something different than "nvim"
-    # Add a "vi" binary to the build output as an alias?
-    viAlias ? appName == null || appName == "nvim",
-    # Add a "vim" binary to the build output as an alias?
-    vimAlias ? appName == null || appName == "nvim",
     wrapRc ? true,
   }: let
     # This is the structure of a plugin definition.
@@ -66,7 +60,7 @@ with lib;
     # This nixpkgs util function creates an attrset
     # that pkgs.wrapNeovimUnstable uses to configure the Neovim build.
     neovimConfig = neovimUtils.makeNeovimConfig {
-      inherit extraPython3Packages withPython3 withRuby withNodeJs viAlias vimAlias;
+      inherit extraPython3Packages withPython3 withRuby withNodeJs;
       plugins = normalizedPlugins;
     };
 
