@@ -92,6 +92,11 @@ with final.pkgs.lib; let
     air-formatter
     tinymist
     texlab
+    # typescript-language-server
+    # vue-language-server
+    vscode-langservers-extracted
+    vtsls
+    tailwindcss-language-server
 
     #rust
     rustc
