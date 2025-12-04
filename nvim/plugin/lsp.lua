@@ -22,9 +22,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         -- Enable autocompletion
         if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
-            vim.opt.autocomplete = true
             vim.opt.completeopt = { 'fuzzy', 'menuone', 'noinsert', 'popup', 'preview' }
-            vim.opt.winborder = 'rounded'
             vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
             vim.keymap.set('i', '<C-Space>', function()
                 vim.lsp.completion.get()
