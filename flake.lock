@@ -258,22 +258,6 @@
         "type": "github"
       }
     },
-    "lualine-macro-recording": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1724338705,
-        "narHash": "sha256-Jcgddq7ImqHHSGXPUheWfg6t5OenK4a9IBIUcOswXsk=",
-        "owner": "yavorski",
-        "repo": "lualine-macro-recording.nvim",
-        "rev": "e2dcf63ba74e6111b53e1520a4f8a17a3d7427a1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "yavorski",
-        "repo": "lualine-macro-recording.nvim",
-        "type": "github"
-      }
-    },
     "luvit-meta": {
       "flake": false,
       "locked": {
@@ -411,7 +395,6 @@
         "everforest-nvim": "everforest-nvim",
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",
-        "lualine-macro-recording": "lualine-macro-recording",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_3",
         "vague-nvim": "vague-nvim",

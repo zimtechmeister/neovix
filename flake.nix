@@ -21,10 +21,6 @@
       url = "github:vague2k/vague.nvim";
       flake = false;
     };
-    lualine-macro-recording = {
-      url = "github:yavorski/lualine-macro-recording.nvim";
-      flake = false;
-    };
   };
 
   outputs = inputs @ {

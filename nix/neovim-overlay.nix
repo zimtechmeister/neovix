@@ -46,7 +46,6 @@ with final.pkgs.lib; let
 
     nvim-treesitter.withAllGrammars
     lualine-nvim
-    (mkNvimPlugin inputs.lualine-macro-recording "lualine-macro-recording")
     arrow-nvim
     nvim-scrollbar
     gitsigns-nvim
