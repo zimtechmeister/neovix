@@ -14,9 +14,21 @@ require('lualine').setup({
         section_separators = { left = '', right = '' },
     },
     sections = {
-        lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
-        lualine_b = { 'branch', 'diagnostics' },
-        lualine_c = {},
+        lualine_a = {
+            {
+                'mode',
+                separator = { left = '', right = '' },
+                right_padding = 2,
+            },
+        },
+        lualine_b = {
+            'branch',
+            'diagnostics'
+        },
+        lualine_c = {
+            '%=',
+            { 'filename', path = 1, },
+        },
         lualine_x = {},
         lualine_y = {
             -- show recording macro https://www.lazyvim.org/plugins/ui#lualinenvim
@@ -24,10 +36,14 @@ require('lualine').setup({
                 function() return require("noice").api.status.mode.get() end,
                 cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
             },
-            { 'filename', path = 1, },
+            'lsp_status'
         },
         lualine_z = {
-            { 'location', separator = { right = '' }, left_padding = 2 },
+            {
+                'location',
+                separator = { left = '', right = '' },
+                left_padding = 2,
+            },
         },
     },
 })
