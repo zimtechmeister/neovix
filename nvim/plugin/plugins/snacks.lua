@@ -5,7 +5,7 @@ require("snacks").setup({
             keys = {
                 { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
                 { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-                { icon = " ", key = "t", desc = "Open Terminal", action = ":terminal" },
+                { icon = " ", key = "t", desc = "Open Terminal", action = ":Multiplex" },
                 { icon = " ", key = "p", desc = "Find Project", action = ":lua Snacks.dashboard.pick('projects')" },
                 { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
                 { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
@@ -56,7 +56,6 @@ vim.keymap.set('n', '<Esc', function() Snacks.notifier.hide() end, { desc = "Not
 vim.keymap.set('n', '<leader>n', function() Snacks.notifier.show_history() end, { desc = "Notification History" })
 vim.keymap.set('n', '<leader>g', function() Snacks.lazygit.open() end, { desc = "Lazygit" })
 vim.keymap.set('n', '<leader>gb', function() Snacks.git.blame_line() end, { desc = "Git Blame Line" })
-vim.keymap.set('n', '<c-/>', function() Snacks.terminal() end, { desc = "Toggle Terminal" })
 -- incorrect syntax
 -- dont know what this does
 -- { "]]",          function() Snacks.words.jump(vim.v.count1) end,      desc = "Next Reference",               mode = { "n", "t" } },
