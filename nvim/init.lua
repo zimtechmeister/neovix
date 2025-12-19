@@ -17,7 +17,7 @@ vim.opt.breakindent    = true    -- Indent wrapped lines to match line start
 vim.opt.cursorline     = true    -- Highlight current line
 vim.opt.linebreak      = true    -- Wrap long lines at 'breakat' (if 'wrap' is set)
 vim.opt.number         = true    -- Show line numbers
-vim.opt.relativenumber = true
+vim.opt.relativenumber = true    -- Show relative line numbers
 vim.opt.splitbelow     = true    -- Horizontal splits will be below
 vim.opt.splitright     = true    -- Vertical splits will be to the right
 
@@ -31,9 +31,9 @@ vim.opt.fillchars      = 'eob: ' -- Don't show `~` outside of buffer
 -- extra UI options
 vim.opt.showmode       = false -- Don't show the mode, since it's already in the status line
 
-vim.opt.pumblend       = 10 -- Make builtin completion menus slightly transparent
+vim.opt.pumblend       = 5 -- Make builtin completion menus slightly transparent
 vim.opt.pumheight      = 15 -- Limit max height of the popup menu
-vim.opt.winblend       = 10 -- Make floating windows slightly transparent
+vim.opt.winblend       = 5 -- Make floating windows slightly transparent
 
 vim.opt.list           = true -- show some helper symbols
 vim.opt.listchars      = { tab = '→ ', trail = '·', nbsp = '␣', extends = '»', precedes = '«' } -- define the symbols

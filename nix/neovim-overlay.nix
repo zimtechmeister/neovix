@@ -51,7 +51,6 @@ with final.pkgs.lib; let
     gitsigns-nvim
     undotree
     markdown-preview-nvim
-    colorizer # no setup needed
     # folke
     snacks-nvim
     which-key-nvim
@@ -66,6 +65,9 @@ with final.pkgs.lib; let
     mini-surround
     mini-files
     mini-icons
+    mini-indentscope
+    mini-cursorword
+    mini-hipatterns
 
     # colorschemes
     (mkNvimPlugin inputs.vim-moonfly-colors "vim-moonfly-colors")

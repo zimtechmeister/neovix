@@ -42,7 +42,7 @@ require("snacks").setup({
             inline = vim.g.neovim_mode == "skitty" and true or false,
         }
     },
-    indent = { enabled = true },
+    indent = { enabled = false },
     input = { enabled = true },
     notifier = { enabled = true },
     picker = { enabled = true },

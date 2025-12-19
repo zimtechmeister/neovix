@@ -24,3 +24,11 @@ vim.keymap.set("n", "<leader>E", function()
     end,
     { desc = 'Open Mini Files at current buffer' })
 require('mini.icons').setup()
+require('mini.indentscope').setup()
+require('mini.cursorword').setup()
+local hipatterns = require('mini.hipatterns')
+require('mini.hipatterns').setup({
+    highlighters = {
+        hex_color = hipatterns.gen_highlighter.hex_color(),
+    }
+})
