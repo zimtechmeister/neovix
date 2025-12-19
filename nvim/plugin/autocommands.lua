@@ -19,6 +19,7 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt.formatoptions:remove { "c", "r", "o" }
     end,
 })
+
 -- show line numbers and more in terminal buffer
 vim.api.nvim_create_autocmd("TermOpen", {
     desc = "show line numbers and more in terminal buffer",

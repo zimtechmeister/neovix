@@ -1,22 +1,76 @@
 vim.loader.enable()
 
--- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
+-- General
+vim.opt.undofile       = true  -- Enable persistent undo (see also `:h undodir`)
 
---line numbers
-vim.opt.number = true
+vim.opt.backup         = false -- Don't store backup while overwriting the file
+vim.opt.writebackup    = false -- Don't store backup while overwriting the file
+
+vim.opt.updatetime     = 250   -- Decrease time before swap file is written and CursorHold event is triggered
+
+vim.opt.mouse          = 'a'   -- Enable mouse for all available modes
+
+-- Appearance
+vim.g.have_nerd_font   = true    -- Set to true if you have a Nerd Font installed and selected in the terminal
+
+vim.opt.breakindent    = true    -- Indent wrapped lines to match line start
+vim.opt.cursorline     = true    -- Highlight current line
+vim.opt.linebreak      = true    -- Wrap long lines at 'breakat' (if 'wrap' is set)
+vim.opt.number         = true    -- Show line numbers
 vim.opt.relativenumber = true
+vim.opt.splitbelow     = true    -- Horizontal splits will be below
+vim.opt.splitright     = true    -- Vertical splits will be to the right
 
--- this adds border to literally everythin (too much)
--- vim.opt.winborder = 'rounded'
+vim.opt.wrap           = false   -- Display long lines as just one line
 
--- in visual block mode move everywhere you want
-vim.opt.virtualedit = 'block'
+vim.opt.colorcolumn    = "80"    -- Highlight column at 80 characters
 
-vim.opt.mouse = 'a'
+vim.opt.signcolumn     = 'yes'   -- Always show sign column (otherwise it will shift text)
+vim.opt.fillchars      = 'eob: ' -- Don't show `~` outside of buffer
 
-vim.opt.wildmode = "noselect:lastused,full"
-vim.opt.wildoptions = "pum"
+-- extra UI options
+vim.opt.showmode       = false -- Don't show the mode, since it's already in the status line
+
+vim.opt.pumblend       = 10 -- Make builtin completion menus slightly transparent
+vim.opt.pumheight      = 15 -- Limit max height of the popup menu
+vim.opt.winblend       = 10 -- Make floating windows slightly transparent
+
+vim.opt.list           = true -- show some helper symbols
+vim.opt.listchars      = { tab = '→ ', trail = '·', nbsp = '␣', extends = '»', precedes = '«' } -- define the symbols
+
+-- Editing
+vim.opt.clipboard      = 'unnamedplus' -- Use system clipboard for all operations
+
+vim.opt.scrolloff      = 8             -- Keep 8 lines above/below the cursor when scrolling
+
+vim.opt.ignorecase     = true          -- Ignore case when searching (use `\C` to force not doing that)
+vim.opt.hlsearch       = true          -- Highlight all search results
+vim.opt.incsearch      = true          -- Show search results while typing
+vim.opt.infercase      = true          -- Infer letter cases for a richer built-in keyword completion
+vim.opt.smartcase      = true          -- Don't ignore case when searching if pattern has upper case
+vim.opt.smartindent    = true          -- Make indenting smart
+
+vim.opt.inccommand     = 'split'       -- Preview substitutions live, as you type
+
+vim.opt.expandtab      = true          -- Use spaces instead of tabs
+vim.opt.tabstop        = 4             -- Number of spaces that a <Tab> counts for
+vim.opt.softtabstop    = 4             -- Number of spaces that a <Tab> counts for while editing
+vim.opt.shiftwidth     = 4             -- Number of spaces to use for each step of (auto)indent
+
+vim.opt.virtualedit    = 'block'       -- Allow going past the end of line in visual block mode
+vim.opt.formatoptions  = 'qjl1'        -- Don't autoformat comments
+
+vim.opt.completeopt    = {             -- Customize completions
+    'fuzzy',
+    'menuone',
+    'noinsert',
+    'popup',
+    'preview'
+}
+
+-- Command line completion options
+vim.opt.wildmode       = "noselect:lastused,full"
+vim.opt.wildoptions    = "pum"
 vim.api.nvim_create_autocmd("CmdlineChanged", {
     pattern = { ":", "/", "?" },
     callback = function()
@@ -24,54 +78,6 @@ vim.api.nvim_create_autocmd("CmdlineChanged", {
     end,
     desc = "Trigger wildmenu for command line, search, and substitute prompts",
 })
-
--- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
-
-vim.opt.clipboard = 'unnamedplus'
-
-vim.opt.hlsearch = true
-
-vim.opt.undofile = true
-
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-
-vim.opt.signcolumn = 'yes'
-
-vim.opt.updatetime = 250
-
--- Decrease mapped sequence wait time
--- Displays which-key popup sooner
-vim.opt.timeoutlen = 300
-
--- Sets how Neovim will display certain whitespace characters in the editor.
-vim.opt.list = true
-vim.opt.listchars = { tab = '→ ', trail = '·', nbsp = '␣' }
-
--- tab behavior
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-
-vim.opt.smartindent = true
-
--- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
-
-vim.opt.cursorline = true
-
-vim.opt.colorcolumn = "80"
-
-vim.opt.wrap = false
-
-vim.opt.scrolloff = 8
-
-vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
-
 
 -- Neovide
 -- NOTE: some settings are configured in a neovide/config.toml file
