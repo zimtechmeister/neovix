@@ -31,9 +31,7 @@ vim.opt.fillchars      = 'eob: ' -- Don't show `~` outside of buffer
 -- extra UI options
 vim.opt.showmode       = false -- Don't show the mode, since it's already in the status line
 
-vim.opt.pumblend       = 5 -- Make builtin completion menus slightly transparent
 vim.opt.pumheight      = 15 -- Limit max height of the popup menu
-vim.opt.winblend       = 5 -- Make floating windows slightly transparent
 
 vim.opt.list           = true -- show some helper symbols
 vim.opt.listchars      = { tab = '→ ', trail = '·', nbsp = '␣', extends = '»', precedes = '«' } -- define the symbols
